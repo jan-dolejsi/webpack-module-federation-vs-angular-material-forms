@@ -36,7 +36,17 @@ npm uninstall @angular/cli -g
 
 cd remote_app_shell
 npm install
+```
+
+Switch the default `@angular-devkit/build-angular` to `ngx-build-plus`:
+
+```bash
 npx ng add ngx-build-plus@16.0.0
+```
+
+Add Module Federation.
+
+```bash
 npx ng add @angular-architects/module-federation@16.0.4 --type host --project remote_app_shell --port 3200
 ```
 
