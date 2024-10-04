@@ -62,10 +62,11 @@ Then start the server (by running this in the `remote_app_shell` subfolder):
 npx ng serve
 ```
 
+Point your browser to <http://localhost:3200/>.\
+This should show the vanila Angular application.
+
 1. replace the [app.component.html](./remote_app_shell/src/app/app.component.html) `<p>Host application</p>`,
 2. add `routerLink` to navigate to `/mfe1` and the router outlet.
-
-Point your browser to <http://localhost:3200/>
 
 ## Microfrontend
 
@@ -106,6 +107,9 @@ Then start the server (run this in the `mfe1` subfolder):
 npx ng serve
 ```
 
+Point a new browser tab to <http://localhost:4201/>.\
+This should show the vanila Angular application. It shows the same micro-frontend as a standalone Angular application.
+
 Replace the [app.component.html](./mfe1/src/app/app.component.html) `<p>Standalone Micro-frontend 1</p>` and the router outlet.
 
 Create the module that will become the micro-frontend exposed for remote consumption:
@@ -137,8 +141,14 @@ Add webpack exposes/remotes configuration. The vital configuration is spread acr
 1. /mfe1/webpack.config.js -> see the `exposes` field\
 1. /mfe1/src/app/module-a/module-a.module.ts -> add the `export { ModuleAModule as MfeModule };` to make it correspond to the `webpack.config.js` below
 1. /mfe1/src/app/app.module.ts add `ModuleAModule` to module imports
-1. /remote_app_shell .. webpack.config.js -> see the `remotes` field\
+1. /remote_app_shell .. webpack.config.js -> see the `remotes` field (fix the port to `4201`)\
 1. /remote_app_shell .. app-routing.module.ts -> adds the lazy-loaded mfe1 routes
 1. /remote_app_shell .. declarations.d.ts -> declare the remote module for the tsc compiler's sake
 
 See commit # TBD for more detail.
+
+Re-start the server (if it is running, kill it with Ctrl+C and run this in the `mfe1` and `remote_app_shell` subfolders respectively):
+
+```bash
+npx ng serve
+```
