@@ -1,1 +1,14 @@
-<p>feature works!</p>
+<p>Reactive Form</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Select an option</mat-label>
+        <mat-select formControlName="option">
+            <mat-option *ngFor="let option of options" [value]="option">
+                {{ option }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+</form>
