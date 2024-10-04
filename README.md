@@ -117,10 +117,12 @@ To test the micro-frontend as a standalone Angualar app, point your browser to <
 
 Add webpack exposes/remotes configuration. The vital configuration is spread across following files:
 
-/mfe1/webpack.config.js -> see the `exposes` field\
-/remote_app_shell .. webpack.config.js -> see the `remotes` field\
-/remote_app_shell .. app-routing.module.ts -> adds the lazy-loaded mfe1 routes
-/remote_app_shell .. declarations.d.ts -> declare the remote module for the tsc compiler's sake
+1. /mfe1/webpack.config.js -> see the `exposes` field\
+1. /mfe1/src/app/module-a/module-a.module.ts -> add the `export { ModuleAModule as MfeModule };` to make it correspond to the `webpack.config.js` below
+1. /mfe1/src/app/app.module.ts add `ModuleAModule` to module imports
+1. /remote_app_shell .. webpack.config.js -> see the `remotes` field\
+1. /remote_app_shell .. app-routing.module.ts -> adds the lazy-loaded mfe1 routes
+1. /remote_app_shell .. declarations.d.ts -> declare the remote module for the tsc compiler's sake
 
 See commit # TBD for more detail.
 
