@@ -124,7 +124,7 @@ Add webpack exposes/remotes configuration. The vital configuration is spread acr
 1. /remote_app_shell .. app-routing.module.ts -> adds the lazy-loaded mfe1 routes
 1. /remote_app_shell .. declarations.d.ts -> declare the remote module for the tsc compiler's sake
 
-See commit # TBD for more detail.
+See commit #[e459971](https://github.com/jan-dolejsi/webpack-module-federation-vs-angular-material-forms/commit/e45997145ebe4fc24e93b3d8819effd9ec12ed15) for more detail.
 
 ## Add _Hello World_ services and inject it to the component
 
