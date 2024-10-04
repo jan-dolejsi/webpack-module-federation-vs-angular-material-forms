@@ -38,19 +38,25 @@ cd remote_app_shell
 npm install
 ```
 
-Switch the default `@angular-devkit/build-angular` to `ngx-build-plus`:
+Install Angualar Material (by running this in the `remote_app_shell` subfolder):
+
+```bash
+npx ng add @angular/material
+```
+
+Switch the default `@angular-devkit/build-angular` to `ngx-build-plus`  (by running this in the `remote_app_shell` subfolder):
 
 ```bash
 npx ng add ngx-build-plus@16.0.0
 ```
 
-Add Module Federation.
+Add Module Federation (by running this in the `remote_app_shell` subfolder):
 
 ```bash
 npx ng add @angular-architects/module-federation@16.0.4 --type host --project remote_app_shell --port 3200
 ```
 
-Then in the `remote_app_shell` subfolder:
+Then start the server (by running this in the `remote_app_shell` subfolder):
 
 ```bash
 npx ng serve
@@ -80,10 +86,21 @@ npm uninstall @angular/cli -g
 
 cd mfe1
 npm install
+```
+
+Install Angualar Material (run this in the `mfe1` subfolder)
+
+```bash
+npx ng add @angular/material
+```
+
+Expose the module (run this in the `mfe1` subfolder).
+
+```bash
 npx ng add @angular-architects/module-federation@16.0.4 --type remote --project mfe1 --port 4201
 ```
 
-Then in the `mfe1` subfolder:
+Then start the server (run this in the `mfe1` subfolder):
 
 ```bash
 npx ng serve
