@@ -11,7 +11,7 @@ The general approach for the Module Federation is described in [Dynamic Module F
 | ---------- | -------------------------------------- | -------------- |
 | sub-folder | [/remote_app_shell](/remote_app_shell) | [/mfe1](/mfe1) |
 | serve      | cd remote_app_shell && npx ng serve    | cd mfe1 && npx ng build --project ngx-my-components && npx ng serve |
-| browse     | <http://localhost:3200/>               | <http://localhost:4201/> |
+| browse     | <http://localhost:3200/>               | <http://localhost:4221/> |
 
 Here are the steps how to reproduce this:
 
@@ -98,7 +98,7 @@ npx ng add @angular/material
 Expose the module (run this in the `mfe1` subfolder).
 
 ```bash
-npx ng add @angular-architects/module-federation@16.0.4 --type remote --project mfe1 --port 4201
+npx ng add @angular-architects/module-federation@16.0.4 --type remote --project mfe1 --port 4221
 ```
 
 Then start the server (run this in the `mfe1` subfolder):
@@ -107,7 +107,7 @@ Then start the server (run this in the `mfe1` subfolder):
 npx ng serve
 ```
 
-Point a new browser tab to <http://localhost:4201/>.\
+Point a new browser tab to <http://localhost:4221/>.\
 This should show the vanila Angular application. It shows the same micro-frontend as a standalone Angular application.
 
 Replace the [app.component.html](./mfe1/src/app/app.component.html) `<p>Standalone Micro-frontend 1</p>` and the router outlet.
@@ -121,18 +121,18 @@ npx ng generate module module-a --project mfe1 --routing --routing-scope Child
 Add simple _home_ component to the module A:
 
 ```bash
-npx ng generate component module-a/home --standalone --style css --project mfe1
+npx ng generate component module-a/home --standalone --skip-tests --style css --project mfe1
 ```
 
 Add simple _feature_ component to the module A (the one that will require dependency injection later):
 
 ```bash
-npx ng generate component module-a/feature --standalone --style css --project mfe1
+npx ng generate component module-a/feature --standalone --skip-tests --style css --project mfe1
 ```
 
 Add a router link to the Home component to navigate to the Feature component.
 
-To test the micro-frontend as a standalone Angualar app, point your browser to <http://localhost:4201/>
+To test the micro-frontend as a standalone Angualar app, point your browser to <http://localhost:4221/>
 
 ## Register Micro-frontend in the App Shell
 
@@ -141,7 +141,7 @@ Add webpack exposes/remotes configuration. The vital configuration is spread acr
 1. /mfe1/webpack.config.js -> see the `exposes` field\
 1. /mfe1/src/app/module-a/module-a.module.ts -> add the `export { ModuleAModule as MfeModule };` to make it correspond to the `webpack.config.js` below
 1. /mfe1/src/app/app.module.ts add `ModuleAModule` to module imports
-1. /remote_app_shell .. webpack.config.js -> see the `remotes` field (fix the port to `4201`)\
+1. /remote_app_shell .. webpack.config.js -> see the `remotes` field (fix the port to `4221`)\
 1. /remote_app_shell .. app-routing.module.ts -> adds the lazy-loaded mfe1 routes
 1. /remote_app_shell .. declarations.d.ts -> declare the remote module for the tsc compiler's sake
 
