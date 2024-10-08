@@ -8,6 +8,10 @@ module.exports = withModuleFederationPlugin({
     './Module': './src/app/module-a/module-a.module.ts',
   },
 
+  // shared: {
+  //   ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+  // },
+
   shared: share({
     "@angular/core": {
       singleton: true,
