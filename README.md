@@ -152,3 +152,13 @@ Re-start the server (if it is running, kill it with Ctrl+C and run this in the `
 ```bash
 npx ng serve
 ```
+
+## Microfrontend 2
+
+### How to run the MFE2 sample
+
+```bash
+cd mfe2
+npm install
+npx ng serve
+```

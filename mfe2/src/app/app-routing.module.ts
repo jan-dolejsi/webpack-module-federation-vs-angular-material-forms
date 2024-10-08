@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './module-a/home/home.component';
 
 const routes: Routes = [
   {
-    path: 'mfe1',
-    loadChildren: () => import('mfe1/Module')
-      .then(m => m.MfeModule)
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   },
   {
-    path: 'mfe2',
-    loadChildren: () => import('mfe2/Module')
-      .then(m => m.MfeModule)
+    path: 'home',
+    component: HomeComponent,
+    pathMatch: 'full'
   },
 ];
 
